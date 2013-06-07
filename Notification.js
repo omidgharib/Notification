@@ -2,60 +2,81 @@
 (function($,undefined){
   "use strict";
   var
-	ie = (navigator.appVersion.indexOf("MSIE") !== -1) ? parseFloat(navigator.appVersion.split("MSIE")[1]) : 99,
-	body = $("body"),
-  	notificationHolder = $("div#notificationHolder"),
-  	abas = "Abas";
+    ie = (navigator.appVersion.indexOf("MSIE") !== -1) ? parseFloat(navigator.appVersion.split("MSIE")[1]) : 99,
+    body = $("body"),
+    markup = "",
+    notificationHolder = $("div#notificationHolder"),
+    abas = "abas";
 
-  console.log(ie);
-  $.notification = function(opt){
-  	var
-  		$this = $(this),
-  		markup = null,
-  		data = $.extend({
-			'type'			: 'alert',
-			'message'		: '',
-			'theme'			: 'default',
-			'backColor'		: 'white',
-			'pos'			: 'default',	// position
-			'timeout'		: 3000,
-			'animationDue'	: 500,
-			'effect'		: 'default',
-			'autohide'		: true,
-			'clallBack'		: null
-  		},opt),
-  		abas2 = "";
+  $.fn.notification = function(opt){
+    var
+      $this = $(this),
+      $notification = null,
+      data = $.extend({
+        type          : 'alert',
+        message       : '',
+        theme         : 'default',
+        pos           : 'left',
+        timeout       : 3000,
+        animationDue  : 400,
+        effect        : 'default',
+        autoHide      : true,
+        callBack      : null
+      },opt),
+      postBackAnim = function(){
+       $notification
+       .animate({
+         'left' : -$notification.width()
+       },data.animationDue);
+      },
+      abas2 = "abas2";
 
-	// Add holder if it doesnt exist yet
-	if(!notificationHolder.length){
-		$("body").append("<div id='notificationHolder'></div>");
-  		notificationHolder = $('div#notificationHolder');
-  		if(data.pos == 'left'){
-  			notificationHolder.css('bottom','10%')
-  			notificationHolder.css('left','0');
-  		}
-  		else if(data.pos == 'right'){
-  			notificationHolder.css('bottom','10%')
-  			notificationHolder.css('right','0');
-  		}
-  		else if(data.pos == 'top'){
-  			notificationHolder.css('top','0')
-  			notificationHolder.css('left','30%');
-  		}
-  		else if(data.pos == 'bottom'){
-  			notificationHolder.css('bottom','0')
-  			notificationHolder.css('left','30%');
-  		}
-	}
+    //Add holder if it doesnt exist yet
+    if(!notificationHolder.length){
+      $("body").append("<div id='notificationHolder'></div>");
+      notificationHolder = $('div#notificationHolder');
+      console.log();
+      if(data.pos === 'left'){
+       notificationHolder.css('bottom','25%')
+       notificationHolder.css('left','0');
+      }
+      else if(data.pos === 'right'){
+       notificationHolder.css('bottom','25%')
+       notificationHolder.css('right','0');
+      }
+      else if(data.pos === 'top'){
+       notificationHolder.css('top','0')
+       notificationHolder.css('left','30%');
+      }
+      else if(data.pos === 'bottom'){
+       notificationHolder.css('bottom','0')
+       notificationHolder.css('left','30%');
+      }
+    }
 
-	markup = [
-		'<div id="notification" class="' + data.type + ' ' + data.theme + '">',
-		'<div class="notifyIcon"></div>',
-		'<p class="message">' + data.message + '</p></div>'
-	].join('');
+    markup = [
+     '<div id="notification" class="' + data.type + ' ' + data.theme + '">',
+     '<div class="notifyIcon"></div>',
+     '<p class="message">' + data.message + '</p></div>'
+    ].join('');
 
-	$(markup).appendTo(notificationHolder);
+    $notification = $(markup).appendTo(notificationHolder);
+    console.log($notification,$notification.width());
+
+    $notification
+    .css("left",-$notification.width())
+    .animate({
+     'left' : 0
+    },data.animationDue);
+
+    if(!data.autoHide){
+     $notification.click(function(){
+      postBackAnim();
+     });
+    }
+    else{
+      setTimeout(postBackAnim,data.timeout);
+    }
+
   };
-  
-//})(window.jQuery);
 })(window.Zepto || window.jQuery);
