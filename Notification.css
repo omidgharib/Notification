@@ -20,7 +20,7 @@
   height: 32px;
   margin-top: 14px;
 }
-#notificationHolder div.alert {
+#notificationHolder div.success {
   background-color: #006400;
 }
 #notificationHolder div.default {
