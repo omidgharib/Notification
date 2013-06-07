@@ -2,7 +2,8 @@
 	position fixed
 
 #notification 
-	width 200px
+	position absolute
+	min-width 200px
 	min-height 70px
 	margin-top 10px
 	background-color #dde
@@ -18,3 +19,15 @@
 	width 32px
 	height 32px
 	margin-top 14px
+	
+// different type
+#notificationHolder div.alert
+	background-color darkgreen 
+
+// different theme
+#notificationHolder div.default
+	-webkit-box-shadow 0 0 10px 1px #666 
+	box-shadow 0 0 10px 1px #666
+	color #eee
+	-webkit-border-radius 5px 
+	border-radius 5px 
