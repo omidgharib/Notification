@@ -1,31 +1,43 @@
 $(function(){
-	$.notification({
-		'type'			: 'error',
-		'message' 		: 'Testing notify :)',
-		'theme'			: 'default',
-		'backColor'		: '#ecc',
-		'pos'			: 'left',	// position
-		'timeout'		: 2500,
-		'animationDue'	: 800,
-		'effect'		: 'default',
-		'autohide'		: true,
-		'clallBack'		: function(){
+	$.fn.notification({
+		type          : 'alert',
+		message       : 'test 1 abas :D',
+		theme         : 'default',
+		pos           : 'left',
+		timeout       : 3000,
+		animationDue  : 400,
+		effect        : 'default',
+		autoHide      : true,
+		callBack      : function(){
 			console.log("delete");
 		}
-	});
+  	});
 
-	$.notification({
-		'type'			: 'alert',
-		'message' 		: 'Testing notify 2 :D',
-		'theme'			: 'default',
-		'backColor'		: '#ecc',
-		'pos'			: 'left',	// position
-		'timeout'		: 2500,
-		'animationDue'	: 800,
-		'effect'		: 'default',
-		'autohide'		: true,
-		'clallBack'		: function(){
+  	$.fn.notification({
+		type          : 'alert',
+		message       : 'test 2 abas kh kh kh :D',
+		theme         : 'default',
+		pos           : 'left',
+		timeout       : 3000,
+		animationDue  : 400,
+		effect        : 'default',
+		autoHide      : false,
+		callBack      : function(){
 			console.log("delete");
 		}
-	});
+  	});
+
+  	$.fn.notification({
+		type          : 'alert',
+		message       : 'test 3 ??? abas :D',
+		theme         : 'default',
+		pos           : 'left',
+		timeout       : 3000,
+		animationDue  : 900,
+		effect        : 'default',
+		autoHide      : true,
+		callBack      : function(){
+			console.log("delete");
+		}
+  	});
 });
