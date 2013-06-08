@@ -9,12 +9,12 @@ $(function(){
 		effect        : 'default',
 		autoHide      : true,
 		callBack      : function(){
-			console.log("delete");
+			console.log("delete1");
 		}
   	});
 
   	$.fn.notification({
-		type          : 'alert',
+		type          : 'success',
 		message       : 'test 2 abas kh kh kh :D',
 		theme         : 'default',
 		pos           : 'left',
@@ -23,7 +23,7 @@ $(function(){
 		effect        : 'default',
 		autoHide      : false,
 		callBack      : function(){
-			console.log("delete");
+			console.log("delete3");
 		}
   	});
 
@@ -35,9 +35,6 @@ $(function(){
 		timeout       : 3000,
 		animationDue  : 900,
 		effect        : 'default',
-		autoHide      : true,
-		callBack      : function(){
-			console.log("delete");
-		}
+		autoHide      : true
   	});
 });
