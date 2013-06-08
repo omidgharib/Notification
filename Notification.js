@@ -8,6 +8,7 @@
     notificationHolder = $("div#notificationHolder"),
     abas = "abas";
 
+  console.log(ie);
   $.fn.notification = function(opt){
     var
       $this = $(this),
@@ -27,7 +28,12 @@
        $notification
        .animate({
          'left' : -$notification.width()
-       },data.animationDue);
+       },data.animationDue,callBackRun);
+      },
+      callBackRun = function(){
+        if(data.callBack !== null){
+          data.callBack();
+        }
       },
       abas2 = "abas2";
 
