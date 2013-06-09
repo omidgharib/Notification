@@ -70,9 +70,9 @@
     console.log($notification,$notification.width());
 
     $notification
-    .css("left",-$notification.width())
+    .css(data.pos,-$notification.width())
     .animate({
-     'left' : 0
+     data.pos.toString() : 0
     },data.animationDue);
 
     if(!data.autoHide){
